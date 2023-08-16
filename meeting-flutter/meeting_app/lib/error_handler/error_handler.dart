@@ -2,7 +2,10 @@
 // Use of this source code is governed by a MIT license that can be
 // found in the LICENSE file.
 
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
+import 'package:nemeeting/error_handler/bugly_error_handler.dart';
 import 'package:nemeeting/error_handler/do_nothing_handler.dart';
 
 abstract class ErrorHandler {
@@ -11,7 +14,7 @@ abstract class ErrorHandler {
   ErrorHandler();
 
   factory ErrorHandler.instance() {
-    _handler ??= DoNothingErrorHandler();
+    _handler ??= Platform.isAndroid ? BuglyErrorHandler() : DoNothingErrorHandler();
     return _handler!;
   }
 

@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.netease.yunxin.meeting.util.BuglyErrorHandler;
 import com.netease.yunxin.meeting.util.FileProviderUtil;
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
@@ -252,6 +254,7 @@ public class MainActivity extends FlutterActivity {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     Log.i(TAG, "onCreate@" + hashCode());
+    BuglyErrorHandler.install();
   }
 
   @Override
