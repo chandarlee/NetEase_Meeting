@@ -26,9 +26,11 @@ jobs:
           channel: stable
           flutter-version: 3.22.2
 
-      - run: pwd
-      - run: ls -al
-      - run: cd meeting-flutter/meeting-app && flutter pub get && flutter build apk
+      - run: flutter pub get
+        working-directory: meeting-flutter/meeting-app
+
+      - run: flutter build apk
+        working-directory: meeting-flutter/meeting-app
 
   build_iOS:
     name: Build for iOS
@@ -47,6 +49,8 @@ jobs:
           channel: stable
           flutter-version: 3.22.2
 
-      - run: pwd
-      - run: ls -al
-      - run: cd meeting-flutter/meeting-app && flutter pub get && flutter build ios --release --no-codesign
+      - run: flutter pub get
+        working-directory: meeting-flutter/meeting-app
+
+      - run: flutter build ios --release --no-codesign
+        working-directory: meeting-flutter/meeting-app
