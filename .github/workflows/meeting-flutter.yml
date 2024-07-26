@@ -15,11 +15,13 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: Netease_Meeting/meeting-flutter/meeting-app
+        working-directory: ./meeting-flutter/meeting-app
 
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
+
+      - run: pwd
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
