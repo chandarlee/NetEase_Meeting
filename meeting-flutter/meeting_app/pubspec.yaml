@@ -2,7 +2,7 @@ name: nemeeting
 description: A new Flutter application.
 publish_to: none
 
-version: 4.6.0+40600
+version: 4.7.0+40700
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
