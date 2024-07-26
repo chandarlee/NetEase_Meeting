@@ -42,11 +42,13 @@ jobs:
 
     steps:
       - run: pwd
+      - run: ls -al
 
       - name: Clone repository
         uses: actions/checkout@v4
 
       - run: pwd
+      - run: ls -al
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
