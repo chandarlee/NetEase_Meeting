@@ -15,13 +15,10 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ${{github.workspace}}/meeting-flutter/meeting-app
 
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
-
-      - run: pwd
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
@@ -29,6 +26,9 @@ jobs:
           channel: stable
           flutter-version: 3.22.2
 
+      - run: pwd
+      - run: ls -al
+      - run: cd meeting-flutter/meeting-app
       - run: flutter pub get
       - run: flutter build apk
 
@@ -38,17 +38,10 @@ jobs:
     defaults:
       run:
         shell: bash
-        # working-directory: meeting-flutter/meeting-app
 
     steps:
-      - run: pwd
-      - run: ls -al
-
       - name: Clone repository
         uses: actions/checkout@v4
-
-      - run: pwd
-      - run: ls -al
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
@@ -56,5 +49,8 @@ jobs:
           channel: stable
           flutter-version: 3.22.2
 
+      - run: pwd
+      - run: ls -al
+      - run: cd meeting-flutter/meeting-app
       - run: flutter pub get
       - run: flutter build ios --release --no-codesign
