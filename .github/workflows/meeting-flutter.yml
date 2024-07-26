@@ -28,7 +28,7 @@ jobs:
 
       - run: pwd
       - run: ls -al
-      - run: cd meeting-flutter/meeting-app
+      - run: cd ./meeting-flutter/meeting-app
       - run: flutter pub get
       - run: flutter build apk
 
@@ -51,6 +51,11 @@ jobs:
 
       - run: pwd
       - run: ls -al
-      - run: cd meeting-flutter/meeting-app
+      - run: cd meeting-flutter
+      - run: pwd
+      - run: ls -al
+      - run: cd meeting-app
+      - run: pwd
+      #- run: cd ./meeting-flutter/meeting-app
       - run: flutter pub get
       - run: flutter build ios --release --no-codesign
