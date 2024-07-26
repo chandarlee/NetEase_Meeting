@@ -46,9 +46,6 @@ dependencies:
   device_information: ^0.0.4
   sticky_headers: ^0.3.0
 
-
-# dependency_overrides:
-
 flutter:
 
   uses-material-design: true

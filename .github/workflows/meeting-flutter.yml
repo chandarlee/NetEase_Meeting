@@ -15,7 +15,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: meeting-flutter/meeting-app
+        working-directory: ${{github.workspace}}/meeting-flutter/meeting-app
 
     steps:
       - name: Clone repository
