@@ -47,20 +47,7 @@ dependencies:
   sticky_headers: ^0.3.0
 
 
-# dev_dependencies:
-#  hawk:
-#    path: ../../auto_test/hawk
-dependency_overrides:
-  # device_info_plus: ^8.0.0
-  # yunxin_event_track:
-  #   path: ../yunxin_event_track
-  # yunxin_base:
-  #   path: ./packages/yunxin_base
-  # yunxin_room_kit:
-  #   path: ./packages/yunxin_room_kit
-  # yunxin_meeting:
-  #   path: ./packages/yunxin_meeting
-  # yunxin_meeting: ^0.1.0-rc.0
+# dependency_overrides:
 
 # The following section is specific to Flutter.
 flutter:
