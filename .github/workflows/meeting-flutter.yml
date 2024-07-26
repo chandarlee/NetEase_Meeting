@@ -27,10 +27,10 @@ jobs:
           flutter-version: 3.22.2
 
       - run: flutter pub get
-        working-directory: meeting-flutter/meeting-app
+        working-directory: meeting-flutter/meeting_app
 
       - run: flutter build apk
-        working-directory: meeting-flutter/meeting-app
+        working-directory: meeting-flutter/meeting_app
 
   build_iOS:
     name: Build for iOS
@@ -50,7 +50,7 @@ jobs:
           flutter-version: 3.22.2
 
       - run: flutter pub get
-        working-directory: meeting-flutter/meeting-app
+        working-directory: meeting-flutter/meeting_app
 
       - run: flutter build ios --release --no-codesign
-        working-directory: meeting-flutter/meeting-app
+        working-directory: meeting-flutter/meeting_app
