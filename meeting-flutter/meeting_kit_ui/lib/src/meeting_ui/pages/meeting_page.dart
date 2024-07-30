@@ -4578,6 +4578,10 @@ class MeetingBusinessUiState extends LifecycleBaseState<MeetingPage>
               .participantMuteAudioHandsUpOnTips);
         }
       }
+
+      if (!mute) {
+        startAndroidForegroundService(forMicrophone: true);
+      }
     }
     if (speakingUid == member.uuid && mute) {
       speakingUid = null;
@@ -5674,17 +5678,7 @@ class MeetingBusinessUiState extends LifecycleBaseState<MeetingPage>
     );
     audioVolumeStreams[roomContext.localMember.uuid] =
         StreamController<int>.broadcast();
-
-    /// Android 显示前台服务通知
-    if (Platform.isAndroid) {
-      MeetingCore().getForegroundConfig().then((foregroundConfig) {
-        if (foregroundConfig != null) {
-          NEMeetingPlugin()
-              .getNotificationService()
-              .startForegroundService(foregroundConfig);
-        }
-      });
-    }
+    startAndroidForegroundService(forMediaProjection: true);
 
     initChatRoom();
     if (arguments.defaultWindowMode == WindowMode.whiteBoard.value &&
@@ -5728,6 +5722,34 @@ class MeetingBusinessUiState extends LifecycleBaseState<MeetingPage>
         return element.abs() <= 1e-5;
       });
     });
+  }
+
+  void startAndroidForegroundService({
+    bool forMediaProjection = false,
+    bool forMicrophone = false,
+  }) {
+    /// Android 显示前台服务通知
+    if (Platform.isAndroid) {
+      MeetingCore().getForegroundConfig().then((foregroundConfig) {
+        if (foregroundConfig != null) {
+          final service = NEMeetingPlugin().getNotificationService();
+          if (forMediaProjection) {
+            service.startForegroundService(
+              foregroundConfig,
+              NENotificationService.serviceTypeMediaProjection,
+            );
+            commonLogger.i('start media projection foreground service');
+          }
+          if (forMicrophone) {
+            service.startForegroundService(
+              foregroundConfig,
+              NENotificationService.serviceTypeMicrophone,
+            );
+            commonLogger.i('start microphone foreground service');
+          }
+        }
+      });
+    }
   }
 
   void memberLeaveRtcChannel(List<NERoomMember> members) {
